@@ -30,6 +30,7 @@ window.addEventListener('load', function() {
         })
     })
 
+
     function renderAcvatar(user) {
         var name = user.nickname || user.username;
 
