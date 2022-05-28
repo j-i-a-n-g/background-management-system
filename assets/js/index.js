@@ -1,20 +1,24 @@
 window.addEventListener('load', function() {
     // 获取用户的基本信息
-    $.ajax({
-        url: '/my/userinfo',
-        method: 'GET',
-        // headers: {
-        //     Authorization: localStorage.getItem('token') || ""
-        // },
-        success: function(res) {
-            if (res.status !== -0) {
-                return layui.layer.msg(res.message)
-            }
-            // 调用函数渲染头像
-            renderAcvatar(res.data)
-        }
+    getUserInfo();
 
-    })
+    function getUserInfo() {
+        $.ajax({
+            url: '/my/userinfo',
+            method: 'GET',
+            // headers: {
+            //     Authorization: localStorage.getItem('token') || ""
+            // },
+            success: function(res) {
+                if (res.status !== -0) {
+                    return layui.layer.msg(res.message)
+                }
+                // 调用函数渲染头像
+                renderAcvatar(res.data)
+            }
+
+        })
+    }
     var layer = layui.layer;
     // 点击按钮，实现退出功能
     $('#btnLogout').on('click', function() {
