@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/lib/layui/css/layui.css">
+    <link rel="stylesheet" href="../assets/css/article/art_list.css">
+</head>
+
+<body>
+    <div class="layui-card">
+        <div class="layui-card-header">文章列表</div>
+        <!-- 搜索区域 -->
+        <form class="layui-form" id="source_data">
+            <div class="layui-form-item layui-inline">
+                <select name="cate_id" id="cate_id">
+            <!-- <option value="">所有分类</option> -->
+            <!-- <option value="科技">科技</option>
+            <option value="股市">股市</option>
+            <option value="金融">金融</option> -->
+          </select>
+            </div>
+            <div class="layui-form-item layui-inline">
+                <select name="state">
+            <option value="">所有状态</option>
+            <option value="已发布">已发布</option>
+            <option value="草稿">草稿</option>
+          </select>
+            </div>
+            <div class="layui-form-item layui-inline">
+                <button class="layui-btn" lay-submit lay-filter="formDemo">筛选</button>
+            </div>
+        </form>
+        <!-- 表单区域 -->
+        <table class="layui-table">
+            <colgroup>
+                <col>
+                <col width="150">
+                <col width="180">
+                <col width="150">
+                <col width="180">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>昵称</th>
+                    <th>加入时间</th>
+                    <th>签名</th>
+                    <th>加入时间</th>
+                    <th>签名</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- <tr>
+                    <td>贤心</td>
+                    <td>2016-11-29</td>
+                    <td>人生就像是一场修行</td>
+                    <td>2016-11-29</td>
+                    <td>人生就像是一场修行</td>
+                </tr> -->
+            </tbody>
+        </table>
+    </div>
+    <script type="text/html" id="tpl-table">
+        {{each data}}
+        <tr>
+            <td>{{$value.title}}</td>
+            <td>{{$value.cate_name}}</td>
+            <td>{{$value.pub_date}}</td>
+            <td>{{$value.state}}</td>
+            <td>
+                <button type="button" class="layui-btn layui-btn layui-btn-normal layui-btn layui-btn-xs">编辑</button>
+                <button type="button" class="layui-btn layui-btn layui-btn-danger layui-btn layui-btn-xs">删除</button>
+            </td>
+        </tr>
+        {{/each}}
+    </script>
+    <script type="text/html" id="rng_win">
+        <option value="">所有分类</option>
+        {{each data}}
+        <option value="{{$value.Id}}">{{$value.name}}</option>
+        {{/each}}
+    </script>
+    <script src="../assets/lib/layui/layui.all.js"></script>
+    <script src="../assets/lib/jquery.js"></script>
+    <script src="../assets/js/baseAPI.js"></script>
+    <script src="../assets/lib/template-web.js"></script>
+    <script src="../assets/js/art_list.js"></script>
+</body>
+
+</html>
